@@ -9,19 +9,21 @@ import type { CreateChatCompletionResponseChoicesInner } from 'openai';
 import MessagingResponse from 'twilio/lib/twiml/MessagingResponse';
 
 export default async function handler(req: NextApiRequest , res: NextApiResponse) {
-  console.log("Reached this point");
   if (req.method === 'POST') {
     const twiml = new MessagingResponse();
     const user_message: string = req.body.Body;
+    console.log("Querying OpenAI with: " + user_message);
     const chatbot_response = await queryOpenAi(user_message);
+    console.log("Chatbot response: ", chatbot_response);
     if (chatbot_response == undefined) {
       res.status(500).send({ error: 'Error: No data in response' });
     } 
     else {
+      console.log("Chatbot response: ", chatbot_response)
       twiml.message(chatbot_response);
     }
     res.setHeader('Content-Type', 'text/xml');
-    
+    console.log("Sending text message")
     // res.status(200).type('text/xml').send(twiml.toString());
     res.status(200).send(twiml.toString());
   } else {
