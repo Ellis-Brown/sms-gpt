@@ -5,6 +5,7 @@
 // pages/api/sms.js
 import type { NextApiRequest, NextApiResponse} from 'next';
 import { Configuration, OpenAIApi } from 'openai';
+import type { CreateChatCompletionResponseChoicesInner } from 'openai';
 import MessagingResponse from 'twilio/lib/twiml/MessagingResponse';
 
 export default async function handler(req: NextApiRequest , res: NextApiResponse) {
@@ -42,5 +43,6 @@ async function queryOpenAi(user_message: string) {
   if (!completion || !completion.data || !completion.data.choices || !completion.data.choices[0]) {
     return "Error: No data in response"
   }
-  return completion.data.choices[0].text
+  const temp: CreateChatCompletionResponseChoicesInner = completion.data.choices[0];
+  return temp.message;
 }
