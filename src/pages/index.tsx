@@ -6,9 +6,9 @@ import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
   // const hello = api.example.hello.useQuery({ text: "from tRPC" });
-  async function sendText() {
+  function sendText() {
     console.log("Sending text...");
-    const response = await fetch("/api/send_msg", {
+    fetch("/api/send_msg", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,8 +17,9 @@ const Home: NextPage = () => {
         to: "+1xxxxxxxxxx",
         body: "Hello from tRPC!",
       }),
-    });
-  console.log(await response.json())
+    }).then(response => { return response.json() })
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   }
 
   return (
@@ -29,7 +30,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-      <button onClick={sendText}>Send Text</button>
+        <button onClick={() => sendText()}>Send Text</button>
         <AuthShowcase />
       </div>
     </>
