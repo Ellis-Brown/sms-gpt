@@ -35,7 +35,7 @@ async function queryOpenAi(user_message: string) {
     apiKey: process.env.OPENAI_API_KEY,
   }));
 
-  const completion = await openai.createCompletion({
+  const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     prompt: user_message,
   });
