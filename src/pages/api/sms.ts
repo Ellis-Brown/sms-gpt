@@ -37,7 +37,7 @@ async function queryOpenAi(user_message: string) {
 
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
-    prompt: user_message,
+    messages: [{role: "user", content: user_message}],
   });
   if (!completion || !completion.data || !completion.data.choices || !completion.data.choices[0]) {
     return "Error: No data in response"
