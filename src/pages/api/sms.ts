@@ -44,5 +44,5 @@ async function queryOpenAi(user_message: string) {
     return "Error: No data in response"
   }
   const temp: CreateChatCompletionResponseChoicesInner = completion.data.choices[0];
-  return temp.message;
+  return temp.message?.content;
 }
