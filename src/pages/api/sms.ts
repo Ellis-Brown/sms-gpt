@@ -2,15 +2,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 // pages/api/sms.js
-// import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { Configuration, OpenAIApi } from 'openai';
 import MessagingResponse from 'twilio/lib/twiml/MessagingResponse';
 
-export default function handler(req, res) {
+export default function handler(req: NextApiRequest , res: NextApiResponse) {
   console.log("Reached this point");
   if (req.method === 'POST') {
     const twiml = new MessagingResponse();
-
     twiml.message(req.toString());
 
     res.setHeader('Content-Type', 'text/xml');
