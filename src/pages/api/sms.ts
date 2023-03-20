@@ -3,11 +3,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 // pages/api/sms.js
-import type { NextApiRequest } from 'next';
+import type { NextApiRequest, NextApiResponse} from 'next';
 import { Configuration, OpenAIApi } from 'openai';
 import MessagingResponse from 'twilio/lib/twiml/MessagingResponse';
 
-export default async function handler(req: NextApiRequest , res: MessagingResponse) {
+export default async function handler(req: NextApiRequest , res: NextApiResponse) {
   console.log("Reached this point");
   if (req.method === 'POST') {
     const twiml = new MessagingResponse();
@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest , res: MessagingRespon
     }
     res.setHeader('Content-Type', 'text/xml');
     
-    res.status(200).type('text/xml').send(twiml.toString());
+    // res.status(200).type('text/xml').send(twiml.toString());
     res.status(200).send(twiml.toString());
   } else {
     // Return a 405 'Method Not Allowed' error if the request isn't a POST
