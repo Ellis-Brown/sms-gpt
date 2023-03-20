@@ -3,7 +3,7 @@
 
 // pages/api/sms.js
 // import type { NextApiRequest, NextApiResponse } from 'next';
-import { Configuration, CreateCompletionResponse, OpenAIApi } from 'openai';
+import { Configuration, OpenAIApi } from 'openai';
 import MessagingResponse from 'twilio/lib/twiml/MessagingResponse';
 
 export default function handler(req, res) {
@@ -28,7 +28,7 @@ async function queryOpenAi() {
   }));
 
   const completion = await openai.createCompletion({
-    model: "text-davinci-003",
+    model: "gpt-3.5-turbo",
     prompt: "Hello world",
   });
   if (!completion || !completion.data || !completion.data.choices || !completion.data.choices[0]) {

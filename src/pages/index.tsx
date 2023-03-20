@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { type NextPage } from "next";
 import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -5,7 +6,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const [phoneNumber, setPhoneNumber] = useState("");
+
   function sendText() {
     console.log("Sending text...");
     fetch("/api/send_msg", {
@@ -14,12 +16,21 @@ const Home: NextPage = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        to: "+1xxxxxxxxxx",
-        body: "Hello from tRPC!",
+        to: phoneNumber,
+        body: "Hello from Twilio website!",
       }),
     }).then(response => { return response.json() })
       .then(data => console.log(data))
       .catch(err => console.log(err));
+  }
+
+  const handleTextSubmit = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    sendText();
+  }
+
+  const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    setPhoneNumber(event.target.value);
   }
 
   return (
@@ -30,7 +41,17 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <button onClick={sendText}>Send Text</button>
+        <form onSubmit={handleTextSubmit}>
+          <label htmlFor="phoneNumber">Phone Number:</label>
+          <input
+            type="text"
+            id="phoneNumber"
+            name="phoneNumber"
+            value={phoneNumber}
+            onChange={handleChange}
+          />
+          <button type="submit">Send Text</button>
+        </form>
         <AuthShowcase />
       </div>
     </>
@@ -57,7 +78,7 @@ const AuthShowcase: React.FC = () => {
         className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
         onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
-        {sessionData ? "Sign out" : "Sign in"}
+        {sessionData ? "Sign out" : "Sign in / Sign up"}
       </button>
     </div>
   );
