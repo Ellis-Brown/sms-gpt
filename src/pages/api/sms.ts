@@ -10,7 +10,7 @@ export default function handler(req: NextApiRequest , res: NextApiResponse) {
   console.log("Reached this point");
   if (req.method === 'POST') {
     const twiml = new MessagingResponse();
-    twiml.message(req.toString());
+    twiml.message(JSON.stringify(req.body).toString());
 
     res.setHeader('Content-Type', 'text/xml');
     res.status(200).send(twiml.toString());
