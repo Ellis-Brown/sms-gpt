@@ -20,6 +20,7 @@
     "@types/twilio": "^3.19.3",
     "next": "^13.2.1",
     "next-auth": "^4.19.0",
+    "openai": "^3.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "superjson": "1.9.1",

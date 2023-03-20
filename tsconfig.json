@@ -28,6 +28,6 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-  ],
+, "src/pages/api/sms.js"  ],
   "exclude": ["node_modules"]
 }
