@@ -1,3 +1,12 @@
+# AGI Texting
+The beginning of General Artificial Intellegence, which you can text/WhatsApp/imessage from your phone. The plan is to include multi-modal input and output, over multiple texting apps, and allow for subscription based models with different tiers to fund the cost of daily use. 
+
+Mostly, the ideas of implementation are on my iPad or in my head, I'm just putting this here and the link to my twitter post (https://twitter.com/ellisbrown_code/status/1637977036978307073) as a beginning of a discussion. 
+
+If you are working on a similar project, please reach out to me at `ellis.brown@tufts.edu`. 
+
+> This is a very informally put together and documented repository / twitter thread, I just ran out of time at the moment. 
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
