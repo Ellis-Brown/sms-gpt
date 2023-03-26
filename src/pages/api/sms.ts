@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       max_tokens: 1000,
       stream: true,
     }
-    await consumeOpenAIStream(payload, To, From);
+    await consumeOpenAIStream(payload, From, To);
     res.status(200).send("OK");
   } else {
     // Return a 405 'Method Not Allowed' error if the request isn't a POST
