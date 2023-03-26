@@ -12,6 +12,7 @@ export default async function handler(req: NextApiRequest , res: NextApiResponse
   if (req.method === 'POST') {
     const twiml = new MessagingResponse();
     const user_message: string = req.body.Body;
+    console.log(req.body);
     console.log("Querying OpenAI with: " + user_message);
     const chatbot_response = await queryOpenAi(user_message);
     console.log("Chatbot response: ", chatbot_response);
