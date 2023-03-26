@@ -8,7 +8,7 @@ import type { OpenAIStreamPayload } from '../../utils/OpenAIStreamPayload';
 
 import consumeOpenAIStream from '../../utils/stream_response';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     // const twiml = new MessagingResponse();
     const user_message: string = req.body.Body;
@@ -19,7 +19,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       max_tokens: 1000,
       stream: true,
     }
-    void consumeOpenAIStream(payload, From, To);
+    await consumeOpenAIStream(payload, From, To);
     res.status(200).send("OK");
   } else {
     // Return a 405 'Method Not Allowed' error if the request isn't a POST
