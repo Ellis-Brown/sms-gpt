@@ -5,14 +5,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import type { OpenAIStreamPayload } from './OpenAIStreamPayload';
 import  { OpenAIStream } from './OpenAIStreamPayload';
-const max_msg_size = 20;
+const max_msg_size = 160;
 // Import Twilio client
 import { Twilio } from 'twilio';
 
 // Set up Twilio client
 const client = new Twilio(process.env.TWILIO_ACCOUNT_SID ?? "", 
                           process.env.TWILIO_AUTH_TOKEN ?? "");
-                          
+
+// Costs $0.01 per sent SMS                          
 export default async function consumeOpenAIStream(payload: OpenAIStreamPayload, To: string, From: string) {
   const stream = await OpenAIStream(payload);
 
