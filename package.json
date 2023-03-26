@@ -18,6 +18,7 @@
     "@trpc/react-query": "^10.9.0",
     "@trpc/server": "^10.9.0",
     "@types/twilio": "^3.19.3",
+    "eventsource-parser": "^1.0.0",
     "next": "^13.2.1",
     "next-auth": "^4.19.0",
     "openai": "^3.2.1",
