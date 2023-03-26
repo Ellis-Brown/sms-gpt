@@ -18,13 +18,14 @@ export default async function consumeOpenAIStream(payload: OpenAIStreamPayload, 
 
   let message = '';
   const reader = stream.getReader();
+  const decoder = new TextDecoder();
+
 
   while (true) {
     console.log("Reading stream...")
     const { done, value } = await reader.read();
     if (done) break;
-
-    const chunk = value.toString();
+    const chunk = decoder.decode(value);
     message += chunk;
 
     // Send a text message every max_msg_size characters
