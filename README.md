@@ -9,7 +9,7 @@ If you are working on a similar project, please reach out to me at `ellis.brown@
 
 If you are looking to understand this project, the callback endpoint is https://github.com/Ellis-Brown/sms-gpt/blob/f981a329d136aed116173b4b60e95b127458563e/src/pages/api/sms.ts 
 
-Any code not reacahble from here is dead code.
+Any code not reachable from here is dead code.
 
 # Create T3 App
 
