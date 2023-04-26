@@ -7,6 +7,10 @@ If you are working on a similar project, please reach out to me at `ellis.brown@
 
 > This is a very informally put together and documented repository / twitter thread, I just ran out of time at the moment. 
 
+If you are looking to understand this project, the callback endpoint is https://github.com/Ellis-Brown/sms-gpt/blob/f981a329d136aed116173b4b60e95b127458563e/src/pages/api/sms.ts 
+
+Any code not reacahble from here is dead code.
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
